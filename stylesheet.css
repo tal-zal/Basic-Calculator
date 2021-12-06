@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+}
+
+.calculator{
+    flex-shrink: 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 15px;
+    transition: 0.3s;
+    background-color: white;
+    width: 300px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.calculator .topScreen {
+    width: 95%;
+    height: 10%;
+    background-color: rgb(146, 146, 163);
+    border-radius: 15px;
+}
+
