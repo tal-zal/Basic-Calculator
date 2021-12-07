@@ -1,6 +1,6 @@
-* {
+/* * {
     border: solid 2px blue;
-}
+} */
 
 body {
     display: flex;
@@ -33,14 +33,33 @@ body {
     height: 40%;
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .topScreen {
+    max-width: 300px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
+    justify-content: space-between;
     align-items: flex-end;
     font-size: 28px;
     padding-top: 20px;
+}
+
+.numberContent {
+
+    
+}
+
+.delete {
+    width: 30px;
+    height: 30px;
+    border: solid 2px darkgreen;
+    color: darkgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .border {
