@@ -5,6 +5,10 @@ function buttonHandler(element){
     let buttonID = element.srcElement.id;
     let evaluateString = evaluateStringToPrint;
 
+    if (evaluateString == "ERROR"){
+        evaluateString = "";
+    }
+
     if (buttonID == "one"){
         evaluateString += "1";
     } else if (buttonID == "two"){
@@ -40,15 +44,24 @@ function buttonHandler(element){
     }else if (buttonID == "clear"){
             evaluateString = "";
     } else if (buttonID == "equals"){
-        evaluateString = eval(evaluateString);
-    } else if (buttonID == "brackets"){
-            if (bracketCheck == "left"){
-                evaluateString += "(";
-                bracketCheck = "right";
-            } else if (bracketCheck == "right"){
-                evaluateString += ")";
-                bracketCheck = "left";
+        try {
+            var evaluateStringTemp = eval(evaluateString);
+            if (evaluateStringTemp == "Infinity"){
+                evaluateString = "ERROR";
+            } else {
+                evaluateString = evaluateStringTemp;
             }
+        } catch(e){
+            evaulateString = "ERROR";
+        }
+    } else if (buttonID == "brackets"){
+        if (bracketCheck == "left"){
+            evaluateString += "(";
+            bracketCheck = "right";
+        } else if (bracketCheck == "right"){
+            evaluateString += ")";
+            bracketCheck = "left";
+        }
     }
     document.querySelector(".numberContent").textContent = evaluateString;
     evaluateStringToPrint = evaluateString;
@@ -56,14 +69,16 @@ function buttonHandler(element){
 
 function backspaceHandler(){
     let evaluateString = evaluateStringToPrint;
-
     let lastCharacter = evaluateString.charAt(evaluateString.length-1);
 
     if (lastCharacter == ")"){
-            bracketCheck = "right";
+        bracketCheck = "right";
+    }
+    if (lastCharacter == "("){
+        bracketCheck = "left";
     }
 
-    evaluateString = evaluateString.substring(0, str.length-1);
+    evaluateString = evaluateString.substring(0, evaluateString.length-1);
     document.querySelector(".numberContent").textContent = evaluateString;
     evaluateStringToPrint = evaluateString;
 }
@@ -78,3 +93,4 @@ buttonDivs.forEach(element => {
     element.addEventListener("click", buttonHandler);
 })
 //add listener to backspace button
+document.querySelector(".delete").addEventListener("click", backspaceHandler);

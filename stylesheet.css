@@ -48,9 +48,10 @@ body {
 }
 
 .numberContent {
-
+    margin-top: 20px;
     
 }
+
 
 .delete {
     width: 30px;
@@ -60,6 +61,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
+}
+
+.delete:hover {
+    background-color: darkgreen;
+    color: white;
+    cursor: pointer;
 }
 
 .border {
